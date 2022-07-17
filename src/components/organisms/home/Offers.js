@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 // Components
-import { Carousel, Col, Row } from "antd";
-import SectionContainer from "@/components/molecules/cards/Section/SectionContainer";
-import SectionTitle from "@/components/molecules/cards/Section/SectionTitle";
-import SectionCardItem from "@/components/molecules/cards/Section/SectionCardItem";
-import SectionContent from "@/components/molecules/cards/Section/SectionContent";
+import { Carousel, Col, Row } from 'antd'
+import SectionContainer from '@/components/molecules/cards/Section/SectionContainer'
+import SectionTitle from '@/components/molecules/cards/Section/SectionTitle'
+import SectionCardItem from '@/components/molecules/cards/Section/SectionCardItem'
+import SectionContent from '@/components/molecules/cards/Section/SectionContent'
 // Mock
-import { offers as mockOffers } from "@/fakeAPI";
+import { offers as mockOffers } from '@/fakeAPI'
 
 const Offers = () => {
   return (
@@ -14,11 +14,7 @@ const Offers = () => {
       <SectionTitle width="295px">OFERTAS</SectionTitle>
       <Carousel autoplay autoplaySpeed={6000}>
         {mockOffers.map((mockOfferRow, idxRow) => (
-          <SectionContent
-            key={`OfferRow-${idxRow}`}
-            id={`OfferRow-${idxRow}`}
-            padding="64px"
-          >
+          <SectionContent key={`OfferRow-${idxRow}`} padding="64px">
             <Row gutter={16}>
               {mockOfferRow.map((offer, idxCol) => (
                 <Col key={idxCol.toString()} className="gutter-row" span={8}>
@@ -38,7 +34,7 @@ const Offers = () => {
         ))}
       </Carousel>
     </SectionContainer>
-  );
-};
+  )
+}
 
-export default Offers;
+export default Offers

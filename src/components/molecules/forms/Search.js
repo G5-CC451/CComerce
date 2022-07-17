@@ -1,52 +1,31 @@
-import React from "react";
+import React from 'react'
 
-import { Cascader, Col, Row } from "antd";
+import { Col, Row, Input } from 'antd'
 
-import { SearchOutlined } from "@ant-design/icons";
+const { Search } = Input
 
-import { categories } from "@/fakeAPI";
+const onSearch = (value) => console.log(value)
 
-const options = categories.map((category) => ({
-  value: category.slug,
-  label: category.name,
-  children: [],
-}));
-
-const onChange = (value, selectedOptions) => {
-  console.log(value, selectedOptions);
-};
-
-const filter = (inputValue, path) =>
-  path.some(
-    (option) =>
-      option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1
-  );
-
-const Search = () => {
+const FormSearch = () => {
   return (
     <Row gutter={16}>
       <Col>
         <span
-          style={{ color: "#000000", fontSize: "20px", fontWeight: "bold" }}
+          style={{ color: '#000000', fontSize: '20px', fontWeight: 'bold' }}
         >
           BUSCAR
         </span>
       </Col>
       <Col>
-        <Cascader
-          options={options}
-          onChange={onChange}
-          suffixIcon={<SearchOutlined style={{ color: "#C0C0C0" }} />}
-          placeholder="Búsqueda por categorías"
-          showSearch={{
-            filter,
-          }}
-          onSearch={(value) => console.log(value)}
-          style={{ width: "550px" }}
+        <Search
+          placeholder="Buscar producto"
+          allowClear
+          onSearch={onSearch}
+          style={{ width: 560, margin: 'auto', verticalAlign: 'middle' }}
         />
       </Col>
     </Row>
-  );
-};
+  )
+}
 
-export default Search;
+export default FormSearch

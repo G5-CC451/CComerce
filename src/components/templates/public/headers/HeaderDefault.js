@@ -85,19 +85,17 @@ const HeaderDefault = () => {
 
   return (
     <HeaderContainer>
-      <Space align="start">
-        <Link href="/">
-          <Image
-            src={CCommerceLogo.src}
-            style={{
-              cursor: 'pointer',
-              width: `${CCommerceLogo.width - 60}px`,
-              height: `${CCommerceLogo.height + 26}px`,
-            }}
-            alt="ccommerce-logo"
-          />
-        </Link>
-      </Space>
+      <Link href="/">
+        <Image
+          src={CCommerceLogo.src}
+          width={171}
+          height={70}
+          style={{
+            cursor: 'pointer',
+          }}
+          alt="ccommerce-logo"
+        />
+      </Link>
       <Space align="center">
         <Search />
         <AudioOutlined
