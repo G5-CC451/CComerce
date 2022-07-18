@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 // Business logic
-import { getCategories } from "@/functions/category";
+import { getCategories } from '@/functions/category'
 // Components
-import SectionContainer from "@/components/molecules/cards/Section/SectionContainer";
-import SectionTitle from "@/components/molecules/cards/Section/SectionTitle";
-import SectionCardItem from "@/components/molecules/cards/Section/SectionCardItem";
-import SectionContent from "@/components/molecules/cards/Section/SectionContent";
-// Mock
-import { categories as mockCategories } from "@/fakeAPI";
+import SectionContainer from '@/components/molecules/cards/Section/SectionContainer'
+import SectionTitle from '@/components/molecules/cards/Section/SectionTitle'
+import SectionCardItem from '@/components/molecules/cards/Section/SectionCardItem'
+import SectionContent from '@/components/molecules/cards/Section/SectionContent'
 
 const CategorySidebar = () => {
-  const [categories, setCategories] = useState(mockCategories);
-  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true);
-    // getCategories().then((c) => {
-    //   setCategories(c.data);
-    //   setLoading(false);
-    // });
-  }, []);
+    setLoading(true)
+    getCategories().then((c) => {
+      console.log('c.data', c.data)
+      setCategories(c.data)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <SectionContainer height="530px">
@@ -28,17 +27,18 @@ const CategorySidebar = () => {
         padding="0px 16px"
         height="460px"
         style={{
-          marginTop: "40px",
-          overflow: "hidden scroll",
+          marginTop: '40px',
+          overflow: 'hidden scroll',
         }}
       >
-        {categories.length > 0 &&
+        {!loading &&
+          categories.length > 0 &&
           categories.map((category, idx) => (
             <SectionCardItem
               onClick={() => {
-                console.log(`category-${String(idx + 1)}`, category.name);
+                console.log(`category-${category._id}`, category)
               }}
-              key={`category-${String(idx + 1)}`}
+              key={`category-${category._id}`}
               width={380}
               height={64}
               cardNumber={{
@@ -46,14 +46,14 @@ const CategorySidebar = () => {
                 value: idx + 1,
               }}
               cardContent={{
-                margin: "auto 0",
+                margin: 'auto 0',
                 content: category.name,
               }}
             />
           ))}
       </SectionContent>
     </SectionContainer>
-  );
-};
+  )
+}
 
-export default CategorySidebar;
+export default CategorySidebar
