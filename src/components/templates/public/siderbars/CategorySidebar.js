@@ -36,11 +36,14 @@ const CategorySidebar = () => {
           categories.map((category, idx) => (
             <SectionCardItem
               onClick={() => {
+                router
                 console.log(`category-${category._id}`, category)
               }}
               key={`category-${category._id}`}
+              id={`category-${category._id}`}
               width={380}
               height={64}
+              textAlign="left"
               cardNumber={{
                 diameter: 40,
                 value: idx + 1,

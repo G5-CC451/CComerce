@@ -1,12 +1,11 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Image, Tooltip, notification } from 'antd'
+import { Image, Tooltip, notification } from 'antd'
 // Utils
 import _ from 'lodash'
 import SectionCardItem from './Section/SectionCardItem'
 import Link from 'next/link'
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons'
-import styled from '@emotion/styled'
 
 const ProductCard = ({ product, value }) => {
   // redux
@@ -101,7 +100,7 @@ const ProductCard = ({ product, value }) => {
                   width: '128px',
                 }}
               >
-                <Tooltip placement="left" title={description}>
+                <Tooltip placement="left" title={title}>
                   <div
                     style={{
                       width: '112px',

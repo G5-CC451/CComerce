@@ -1,66 +1,60 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 // Business logic
 import { getProductsByCount, fetchProductsByFilter } from '@/functions/product'
-import { getCategories } from '@/functions/category'
-import { getSubs } from '@/functions/sub'
 // Components
 import ProductCard from '@/components/molecules/cards/ProductCard'
 import PublicBasic from '@/components/templates/public/Basic'
 import { Col, Row } from 'antd'
 
 const Shop = () => {
+  // Params
+  const router = useRouter()
+  const { searchBy, searchText } = router.query
+
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
-  const [price, setPrice] = useState([0, 0])
-  const [ok, setOk] = useState(false)
-  const [categories, setCategories] = useState([])
-  const [subs, setSubs] = useState([])
 
   const { search } = useSelector((state) => ({ ...state }))
   const { text } = search
 
-  useEffect(() => {
-    loadAllProducts()
-    // fetch categories
-    getCategories().then((res) => setCategories(res.data))
-    // fetch subcategories
-    getSubs().then((res) => setSubs(res.data))
-  }, [])
-
-  const fetchProducts = (arg) => {
+  const fetchProducts = useCallback((arg) => {
     fetchProductsByFilter(arg).then((res) => {
       setProducts(res.data)
-      // setProducts([...res.data, ...res.data, ...res.data])
     })
-  }
+  }, [])
 
   // 1. load products by default on page load
-  const loadAllProducts = () => {
+  const loadAllProducts = useCallback(() => {
     getProductsByCount(12).then((p) => {
       setProducts(p.data)
-      // setProducts([...p.data, ...p.data, ...p.data])
       setLoading(false)
     })
-  }
+  }, [])
 
   // 2. load products on user search input
   useEffect(() => {
-    const delayed = setTimeout(() => {
+    if (text !== '') {
       fetchProducts({ query: text })
-      if (!text) {
-        loadAllProducts()
-      }
-    }, 300)
-    return () => clearTimeout(delayed)
-  }, [text])
+      loadAllProducts()
+    }
+  }, [fetchProducts, loadAllProducts, text])
 
-  // 3. load products based on price range
+  // 3. load products based
   useEffect(() => {
-    console.log('ok to request')
-    fetchProducts({ price })
-  }, [ok, price])
-  console.log('shop-products', products)
+    if (searchBy && searchText) {
+      fetchProducts({ [searchBy]: searchText })
+    }
+  }, [fetchProducts, searchBy, searchText])
+
+  const colSpan = {
+    xs: 24,
+    sm: 12,
+    md: 8,
+    lg: 6,
+    xl: 6,
+  }
 
   return (
     <PublicBasic>
@@ -78,7 +72,7 @@ const Shop = () => {
               products &&
               products.length > 0 &&
               products.map((product, idx) => (
-                <Col key={product._id} span={6}>
+                <Col key={product._id} {...colSpan}>
                   <ProductCard product={product} value={idx + 1} />
                 </Col>
               ))
