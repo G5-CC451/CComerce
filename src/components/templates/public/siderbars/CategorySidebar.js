@@ -9,7 +9,8 @@ import SectionCardItem from '@/components/molecules/cards/Section/SectionCardIte
 import SectionContent from '@/components/molecules/cards/Section/SectionContent'
 import { Spin } from 'antd'
 
-const CCOMMERCE_BASE_URL = process.env.CCOMMERCE_BASE_URL
+const CCOMMERCE_BASE_URL =
+  process.env.CCOMMERCE_BASE_URL || 'http://localhost:3000'
 
 console.log('CCOMMERCE_BASE_URL', CCOMMERCE_BASE_URL)
 
