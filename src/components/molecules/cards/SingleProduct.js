@@ -1,22 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react'
-import Image from 'next/image'
 import styled from '@emotion/styled'
 // Components
-import { Col, Row } from 'antd'
+import { Col, notification, Row } from 'antd'
 import { Carousel } from 'react-responsive-carousel'
 // Styles
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import SectionContainer from './Section/SectionContainer'
 
-import ImagenProducto from '@/assets/images/imagen-producto.png'
-
 // this is childrend component of Product page
-const SingleProduct = () => {
+const SingleProduct = ({ product }) => {
   const [productQty, setProductQty] = useState(10)
 
-  const productCarousel = Array(4).fill(
-    <Image src={ImagenProducto.src} alt="Imagen del producto" />
-  )
+  const productCarousel = product.images.map((productImage) => (
+    <img
+      key={productImage.public_id}
+      id={productImage.public_id}
+      src={productImage.url}
+      alt={product.title}
+    />
+  ))
+
   const BtnQtyStyle = {
     width: '30px',
     height: '30px',
@@ -48,17 +52,24 @@ const SingleProduct = () => {
   }
 
   const CustomCarousel = styled(Carousel)`
-    &&& > .carousel .carousel-slider {
-      margin: 'auto';
+    &&& {
+      margin: auto;
+      height: 790px;
+      overflow: hidden;
     }
   `
 
   return (
     <Row gutter={32}>
       <Col span={10} offset={2} style={{ display: 'flex' }}>
-        <SectionContainer height="840px" padding="20px">
+        <SectionContainer
+          height="840px"
+          padding="20px"
+          display="flex"
+          justifyContent="center"
+        >
           <CustomCarousel
-            width={689}
+            width={615}
             style={{ margin: 'auto !important' }}
             centerSlidePercentage={100}
             autoPlay
@@ -94,9 +105,8 @@ const SingleProduct = () => {
           </Row>
           <Row gutter={16}>
             <Col span={24}>
-              <p style={{ fontSize: '20px' }}>
-                Lorem itsum cirrus cuagonus atmosfericus a the webonus fa at
-                mosfer the wemesierum, winwardium leviosa.
+              <p style={{ fontSize: '20px', height: '135px' }}>
+                {product.description}
               </p>
             </Col>
           </Row>
@@ -117,7 +127,7 @@ const SingleProduct = () => {
           >
             <Col span={4}>S/ </Col>
             <Col span={20} style={{ textAlign: 'right' }}>
-              999.99
+              S/ {Number(product.price).toFixed(2)}
             </Col>
             <small
               style={{
@@ -142,8 +152,16 @@ const SingleProduct = () => {
             >
               <p
                 style={BtnQtyStyle}
+                id="productQtyDecrease"
                 onClick={() => {
-                  setProductQty(productQty - 1)
+                  if (product.quantity > 0 && productQty - 1 > 0) {
+                    setProductQty(productQty - 1)
+                  } else {
+                    notification.error({
+                      message: 'Cantidad no válida',
+                      description: 'Por favor, intente con una cantidad mayor.',
+                    })
+                  }
                 }}
               >
                 -
@@ -162,8 +180,17 @@ const SingleProduct = () => {
             >
               <p
                 style={BtnQtyStyle}
+                id="productQtyIncrease"
                 onClick={() => {
-                  setProductQty(productQty + 1)
+                  if (product.quantity >= productQty + 1) {
+                    setProductQty(productQty + 1)
+                  } else {
+                    notification.error({
+                      message: 'Cantidad no válida',
+                      description:
+                        'No contamos con la cantidad que desea seleccionar. Por favor, intente con una cantidad menor.',
+                    })
+                  }
                 }}
               >
                 +
@@ -179,7 +206,13 @@ const SingleProduct = () => {
           }}
         >
           <Col span={12}>
-            <div style={BtnActionsStyle}>COMPRAR</div>
+            <div
+              style={BtnActionsStyle}
+              id={`buy-${product._id}`}
+              onClick={console.log('COMPRAR')}
+            >
+              COMPRAR
+            </div>
           </Col>
           <Col span={12}>
             <div style={BtnActionsStyle}>AÑADIR</div>

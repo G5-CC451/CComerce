@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 // Components
-import { Layout } from 'antd'
+import { Layout, Spin } from 'antd'
 import { getProduct } from '@/functions/product'
 import SingleProduct from '@/components/molecules/cards/SingleProduct'
 import PublicBasic from '@/components/templates/public/Basic'
@@ -11,34 +11,43 @@ const { Content } = Layout
 const Product = () => {
   const router = useRouter()
   // state
-  const [product, setProduct] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [product, setProduct] = useState(undefined)
   // router
   const { slug } = router.query
 
   useEffect(() => {
-    loadSingleProduct()
-  }, [loadSingleProduct, slug])
+    if (!product) {
+      loadSingleProduct()
+    }
+  }, [loadSingleProduct, product, slug])
 
-  const loadSingleProduct = React.useCallback(() => {
+  const loadSingleProduct = useCallback(() => {
+    setLoading(true)
     getProduct(slug).then((res) => {
       console.log('res.data', res.data)
       setProduct(res.data)
+      setLoading(false)
     })
   }, [slug])
 
   return (
     <PublicBasic>
       <Layout style={{ background: 'transparent' }}>
-        <Content
-          style={{
-            padding: '16px',
-            margin: '16px 0',
-            minHeight: 330,
-          }}
-        >
-          <h2>Título del producto</h2>
-          <SingleProduct />
-        </Content>
+        <Spin spinning={loading}>
+          {product && (
+            <Content
+              style={{
+                padding: '16px',
+                margin: '16px 0',
+                minHeight: 330,
+              }}
+            >
+              <h2>{product.title}</h2>
+              <SingleProduct product={product} />
+            </Content>
+          )}
+        </Spin>
       </Layout>
     </PublicBasic>
   )
