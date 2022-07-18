@@ -7,6 +7,11 @@ import SectionContainer from '@/components/molecules/cards/Section/SectionContai
 import SectionTitle from '@/components/molecules/cards/Section/SectionTitle'
 import SectionCardItem from '@/components/molecules/cards/Section/SectionCardItem'
 import SectionContent from '@/components/molecules/cards/Section/SectionContent'
+import { Spin } from 'antd'
+
+const CCOMMERCE_BASE_URL = process.env.CCOMMERCE_BASE_URL
+
+console.log('CCOMMERCE_BASE_URL', CCOMMERCE_BASE_URL)
 
 const CategorySidebar = () => {
   const [categories, setCategories] = useState([])
@@ -15,7 +20,6 @@ const CategorySidebar = () => {
   useEffect(() => {
     setLoading(true)
     getCategories().then((c) => {
-      console.log('c.data', c.data)
       setCategories(c.data)
       setLoading(false)
     })
@@ -32,30 +36,31 @@ const CategorySidebar = () => {
           overflow: 'hidden scroll',
         }}
       >
-        {!loading &&
-          categories.length > 0 &&
-          categories.map((category, idx) => (
-            <SectionCardItem
-              onClick={() => {
-                router.push(
-                  `${process.env.CCOMMERCE_BASE_URL}/shop?searchBy=category&searchText=${category._id}`
-                )
-              }}
-              key={`category-${category._id}`}
-              id={`category-selector-${idx + 1}`}
-              width={380}
-              height={64}
-              textAlign="left"
-              cardNumber={{
-                diameter: 40,
-                value: idx + 1,
-              }}
-              cardContent={{
-                margin: 'auto 0',
-                content: category.name,
-              }}
-            />
-          ))}
+        <Spin spinning={loading}>
+          {categories.length > 0 &&
+            categories.map((category, idx) => (
+              <SectionCardItem
+                onClick={() => {
+                  router.push(
+                    `${CCOMMERCE_BASE_URL}/shop?searchBy=category&searchText=${category._id}`
+                  )
+                }}
+                key={`category-${category._id}`}
+                id={`category-selector-${idx + 1}`}
+                width={380}
+                height={64}
+                textAlign="left"
+                cardNumber={{
+                  diameter: 40,
+                  value: idx + 1,
+                }}
+                cardContent={{
+                  margin: 'auto 0',
+                  content: category.name,
+                }}
+              />
+            ))}
+        </Spin>
       </SectionContent>
     </SectionContainer>
   )
