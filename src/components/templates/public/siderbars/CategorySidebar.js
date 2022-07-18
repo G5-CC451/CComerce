@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import router from 'next/router'
 // Business logic
 import { getCategories } from '@/functions/category'
 // Components
@@ -36,11 +37,12 @@ const CategorySidebar = () => {
           categories.map((category, idx) => (
             <SectionCardItem
               onClick={() => {
-                router
-                console.log(`category-${category._id}`, category)
+                router.push(
+                  `${process.env.CCOMMERCE_BASE_URL}/shop?searchBy=category&searchText=${category._id}`
+                )
               }}
               key={`category-${category._id}`}
-              id={`category-${category._id}`}
+              id={`category-selector-${idx + 1}`}
               width={380}
               height={64}
               textAlign="left"
