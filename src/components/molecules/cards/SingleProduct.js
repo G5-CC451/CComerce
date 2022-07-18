@@ -10,7 +10,7 @@ import SectionContainer from './Section/SectionContainer'
 
 // this is childrend component of Product page
 const SingleProduct = ({ product }) => {
-  const [productQty, setProductQty] = useState(10)
+  const [productQty, setProductQty] = useState(1)
 
   const productCarousel = product.images.map((productImage) => (
     <img
