@@ -7,7 +7,7 @@ module.exports = {
       'https://cc-ommerce-frontend.vercel.app/register/complete',
     FORGOT_PASSWORD_REDIRECT: 'https://cc-ommerce-frontend.vercel.app/login',
     // API_URL: 'https://cc-ommerce-backend-five.vercel.app/api',
-    API_URL: 'https://ccommerce-api-heroku.herokuapp.com',
+    API_URL: 'https://ccommerce-api-heroku.herokuapp.com/api',
     FIREBASE: {
       API_KEY: 'AIzaSyA2r_gqjfcQNeoNrf8odzeWXVcdq6mLgqw',
       AUTH_DOMAIN: 'saturdayuni-authentication-app.firebaseapp.com',
