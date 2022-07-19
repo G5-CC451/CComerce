@@ -128,6 +128,14 @@ const search_by_category_selected = [
   'Buscar productos categoría *',
   'Buscar productos relacionados con categoría número *',
   'Buscar productos relacionados con categoría *',
+  'Buscar, por categoría número *',
+  'Buscar, categoría número *',
+  'Buscar, categoría *',
+  'Buscar, productos por categoría número *',
+  'Buscar, productos categoría número *',
+  'Buscar, productos categoría *',
+  'Buscar, productos relacionados con categoría número *',
+  'Buscar, productos relacionados con categoría *',
 ]
 
 // Navegar en la vista
