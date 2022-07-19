@@ -1,11 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Image, Tooltip, notification } from 'antd'
-// Utils
 import _ from 'lodash'
-import SectionCardItem from './Section/SectionCardItem'
 import Link from 'next/link'
+// Components
+import { Image, Tooltip, notification } from 'antd'
+import SectionCardItem from './Section/SectionCardItem'
+// Utils
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+// Assets
+import ProductImageDefault from '@/assets/images/product-default.jpeg'
 
 const ProductCard = ({ product, value }) => {
   // redux
@@ -78,7 +81,7 @@ const ProductCard = ({ product, value }) => {
           >
             {' '}
             <Image
-              src={images[0].url}
+              src={images[0] ? images[0].url : ProductImageDefault.src}
               style={{
                 height: '172px',
                 width: '175px',

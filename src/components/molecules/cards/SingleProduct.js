@@ -4,9 +4,10 @@ import styled from '@emotion/styled'
 // Components
 import { Col, notification, Row } from 'antd'
 import { Carousel } from 'react-responsive-carousel'
+import SectionContainer from './Section/SectionContainer'
 // Styles
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import SectionContainer from './Section/SectionContainer'
+
 
 const BtnQtyStyle = {
   width: '30px',

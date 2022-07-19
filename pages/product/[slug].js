@@ -43,7 +43,7 @@ const Product = () => {
                 minHeight: 330,
               }}
             >
-              <SingleProduct product={product} />
+              {product && <SingleProduct product={product} />}
             </Content>
           )}
         </Spin>
