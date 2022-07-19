@@ -43,15 +43,15 @@ export const mockAllCallbacks = {
   },
   search_by_category_selected: (number) => {
     const categoryNode = document.getElementById(`category-selector-${number}`)
-    if (categoryNode) {
+    // if (categoryNode) {
       console.log('categoryNode', categoryNode)
       categoryNode.click()
-    } else {
-      notification.error({
-        message: 'Error de interacción por voz',
-        description: 'El elemento deseado no existe en la página actual',
-      })
-    }
+    // } else {
+      // notification.error({
+        // message: 'Error de interacción por voz',
+        // description: 'El elemento deseado no existe en la página actual',
+      // })
+    // }
   },
   // Navegar en la vista
   to_up: () => {
