@@ -1,14 +1,17 @@
 import React from 'react'
+import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import _ from 'lodash'
 import Link from 'next/link'
 // Components
-import { Image, Tooltip, notification } from 'antd'
+import { Tooltip, notification } from 'antd'
 import SectionCardItem from './Section/SectionCardItem'
 // Utils
 import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+
 // Assets
 import ProductImageDefault from '@/assets/images/product-default.jpeg'
+import { cloudinaryUrl } from '@/config/cloudinary'
 
 const OfferProductCard = ({ product, value }) => {
   // redux
@@ -79,9 +82,16 @@ const OfferProductCard = ({ product, value }) => {
               justifyContent: 'space-between',
             }}
           >
-            {' '}
             <Image
-              src={images[0] ? images[0].url : ProductImageDefault.src}
+              src={
+                images[0]
+                  ? cloudinaryUrl(images[0].public_id, 192, 192)
+                  : ProductImageDefault.src
+              }
+              width={192}
+              height={192}
+              layout="fixed"
+              loading="lazy"
               style={{
                 height: '192px',
                 width: '192px',
@@ -90,7 +100,7 @@ const OfferProductCard = ({ product, value }) => {
                 borderBottomLeftRadius: '12px',
               }}
               className="p-1"
-              alt="placeholder"
+              alt={title}
             />
             <div
               style={{
@@ -196,7 +206,7 @@ const OfferProductCard = ({ product, value }) => {
                       : 'Agregar al carrito'
                   }
                 >
-                  <a
+                  <div
                     onClick={handleAddToCart}
                     disabled={product.quantity < 1}
                     style={{
@@ -207,7 +217,7 @@ const OfferProductCard = ({ product, value }) => {
                     }}
                   >
                     <ShoppingCartOutlined />
-                  </a>
+                  </div>
                 </Tooltip>
               </div>
             </div>

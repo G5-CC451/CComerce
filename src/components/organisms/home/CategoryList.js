@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { getCategories } from "@/functions/category";
+import React, { useState, useEffect } from 'react'
+import { getCategories } from '@/functions/category'
+import Link from 'next/link'
 
 const CategoryList = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     getCategories().then((c) => {
-      setCategories(c.data);
-      setLoading(false);
-    });
-  }, []);
+      setCategories(c.data)
+      setLoading(false)
+    })
+  }, [])
 
   const showCategories = () =>
     categories.map((c) => (
@@ -19,9 +20,9 @@ const CategoryList = () => {
         key={c._id}
         className="col btn btn-outlined-primary btn-lg btn-block btn-raised m-3"
       >
-        <a to={`/category/${c.slug}`}>{c.name}</a>
+        <Link href={`/category/${c.slug}`}>{c.name}</Link>
       </div>
-    ));
+    ))
 
   return (
     <div className="container">
@@ -33,7 +34,7 @@ const CategoryList = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList

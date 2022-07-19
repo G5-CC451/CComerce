@@ -18,6 +18,10 @@ module.exports = {
       MEASUREMENT_ID: 'G-YR6FWJZHQ',
     },
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {

@@ -9,6 +9,7 @@ import OfferProductCard from '@/components/molecules/cards/OfferProductCard'
 import { Carousel } from 'react-responsive-carousel'
 // Styles
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import SectionContent from '@/components/molecules/cards/Section/SectionContent'
 
 const Offers = () => {
   const [products, setProducts] = useState([])
@@ -64,21 +65,26 @@ const Offers = () => {
   return (
     <SectionContainer width="100%" id="Offers">
       <SectionTitle width="295px">OFERTAS</SectionTitle>
-      <Spin spinning={loading}>
-        <Carousel
-          style={{ margin: 'auto !important' }}
-          centerSlidePercentage={100}
-          autoPlay
-          infiniteLoop
-          showArrows={true}
-          centerMode={true}
-          showStatus={false}
-          showThumbs={false}
-          thumbWidth={110}
-        >
-          {CarouselPages}
-        </Carousel>
-      </Spin>
+      <SectionContent padding="12px 16px">
+        <Spin spinning={loading}>
+          <Carousel
+            style={{ margin: 'auto !important' }}
+            centerSlidePercentage={100}
+            interval={5000}
+            transitionTime={1200}
+            autoPlay
+            infiniteLoop
+            showArrows={true}
+            centerMode={true}
+            showStatus={false}
+            showThumbs={false}
+            showIndicators={false}
+            thumbWidth={110}
+          >
+            {CarouselPages}
+          </Carousel>
+        </Spin>
+      </SectionContent>
     </SectionContainer>
   )
 }

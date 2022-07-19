@@ -79,7 +79,6 @@ const ProductCard = ({ product, value }) => {
               justifyContent: 'space-between',
             }}
           >
-            {' '}
             <Image
               src={images[0] ? images[0].url : ProductImageDefault.src}
               style={{
@@ -193,7 +192,7 @@ const ProductCard = ({ product, value }) => {
                       : 'Agregar al carrito'
                   }
                 >
-                  <a
+                  <div
                     onClick={handleAddToCart}
                     disabled={product.quantity < 1}
                     style={{
@@ -204,7 +203,7 @@ const ProductCard = ({ product, value }) => {
                     }}
                   >
                     <ShoppingCartOutlined />
-                  </a>
+                  </div>
                 </Tooltip>
               </div>
             </div>

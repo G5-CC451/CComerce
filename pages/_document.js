@@ -26,6 +26,12 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lemon&display=swap"
             rel="stylesheet"
           />
+          <meta property="og:title" content="Ccommerce - Tienda online" />
+          <meta property="og:type" content="ecommerce.ccommerce" />
+          <meta
+            property="og:url"
+            content="https://cc-ommerce-frontend.vercel.app"
+          />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>

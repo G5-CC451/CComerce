@@ -47,7 +47,6 @@ const Recommendations = () => {
     carouselProducts.length > 0 &&
     carouselProducts.map((carouselProduct, idxCarouselProduct) => (
       <Row
-        id="AQUI_ESTOY_CARAJO"
         key={idxCarouselProduct.toString()}
         justify="space-evenly"
         style={{
@@ -71,6 +70,8 @@ const Recommendations = () => {
         <Spin spinning={loading}>
           <Carousel
             centerSlidePercentage={100}
+            interval={8000}
+            transitionTime={2000}
             autoPlay
             infiniteLoop
             showArrows={false}

@@ -1,3 +1,4 @@
+import { notification } from 'antd'
 import router from 'next/router'
 
 const CCOMMERCE_BASE_URL = process.env.CCOMMERCE_BASE_URL
@@ -42,8 +43,15 @@ export const mockAllCallbacks = {
   },
   search_by_category_selected: (number) => {
     const categoryNode = document.getElementById(`category-selector-${number}`)
-    console.log('categoryNode', categoryNode)
-    categoryNode.click()
+    if (categoryNode) {
+      console.log('categoryNode', categoryNode)
+      categoryNode.click()
+    } else {
+      notification.error({
+        message: 'Error de interacción por voz',
+        description: 'El elemento deseado no existe en la página actual',
+      })
+    }
   },
   // Navegar en la vista
   to_up: () => {
