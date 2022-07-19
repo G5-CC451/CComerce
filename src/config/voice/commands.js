@@ -121,6 +121,9 @@ const go_to_create_category = [
 ]
 const search_by_category_selected = [
   'Categoría *',
+  'Categoría *.',
+  'Ir a categoría *.',
+  'Ir a la categoría *.',
   'Buscar por categoría número *',
   'Buscar categoría número *',
   'Buscar categoría *',
@@ -137,8 +140,6 @@ const search_by_category_selected = [
   'Buscar, productos categoría *.',
   'Buscar, productos relacionados con categoría número *.',
   'Buscar, productos relacionados con categoría *.',
-  'Ir a categoría *.',
-  'Ir a la categoría *.',
 ]
 
 // Navegar en la vista
