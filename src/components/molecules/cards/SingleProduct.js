@@ -8,6 +8,57 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import SectionContainer from './Section/SectionContainer'
 
+const BtnQtyStyle = {
+  width: '30px',
+  height: '30px',
+  color: '#D9D9D9',
+  background: '#FF9E6D',
+  border: '1px solid #FFC759',
+  borderRadius: '50%',
+  fontSize: '36px',
+  //margin: "auto",
+  fontSize: '16px',
+  fontWeight: '700',
+  textAlign: 'center',
+  cursor: 'pointer',
+}
+
+const BtnActionsStyle = {
+  width: '255px',
+  height: '48px',
+  background: '#D9D9D9',
+  border: '1px solid #000000',
+  borderRadius: '20px',
+  fontSize: '40px',
+  lineHeight: '48px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  cursor: 'pointer',
+}
+
+const CustomCarousel = styled(Carousel)`
+  &&& {
+    margin: auto;
+    height: 790px;
+    overflow: hidden;
+
+    & > div {
+      margin: auto;
+    }
+
+    & > .carousel .thumbs-wrapper {
+      margin: 20px 20px 20px -20px;
+    }
+
+    & > .carousel .thumb {
+      margin-right: 3px;
+      border: 3px solid #fee60c;
+    }
+  }
+`
+
 // this is childrend component of Product page
 const SingleProduct = ({ product }) => {
   const [productQty, setProductQty] = useState(1)
@@ -21,55 +72,17 @@ const SingleProduct = ({ product }) => {
     />
   ))
 
-  const BtnQtyStyle = {
-    width: '30px',
-    height: '30px',
-    color: '#D9D9D9',
-    background: '#FF9E6D',
-    border: '1px solid #FFC759',
-    borderRadius: '50%',
-    fontSize: '36px',
-    //margin: "auto",
-    fontSize: '16px',
-    fontWeight: '700',
-    textAlign: 'center',
-    cursor: 'pointer',
-  }
-
-  const BtnActionsStyle = {
-    width: '255px',
-    height: '48px',
-    background: '#D9D9D9',
-    border: '1px solid #000000',
-    borderRadius: '20px',
-    fontSize: '40px',
-    lineHeight: '48px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    cursor: 'pointer',
-  }
-
-  const CustomCarousel = styled(Carousel)`
-    &&& {
-      margin: auto;
-      height: 790px;
-      overflow: hidden;
-    }
-  `
-
   return (
     <Row gutter={32}>
       <Col span={10} offset={2} style={{ display: 'flex' }}>
         <SectionContainer
-          height="840px"
-          padding="20px"
+          height="740px"
+          padding="20px 0 0 0"
           display="flex"
           justifyContent="center"
         >
           <CustomCarousel
-            width={615}
+            width={560}
             style={{ margin: 'auto !important' }}
             centerSlidePercentage={100}
             autoPlay
@@ -87,6 +100,7 @@ const SingleProduct = ({ product }) => {
         </SectionContainer>
       </Col>
       <Col span={12}>
+        <h2>{product.description}</h2>
         <div
           style={{
             width: '577px',
@@ -94,7 +108,7 @@ const SingleProduct = ({ product }) => {
             background: '#D9D9D9',
             border: '1px solid #FFC759',
             borderRadius: '20px',
-            marginTop: '48px',
+            marginTop: '16px',
             padding: '32px',
           }}
         >

@@ -43,7 +43,6 @@ const Product = () => {
                 minHeight: 330,
               }}
             >
-              <h2>{product.title}</h2>
               <SingleProduct product={product} />
             </Content>
           )}
