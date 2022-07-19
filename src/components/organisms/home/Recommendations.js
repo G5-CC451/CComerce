@@ -1,54 +1,91 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from 'react'
+// Business logic
+import { getProductsByCount } from '@/functions/product'
 // Components
-import { Carousel, Col, Row } from "antd";
-import SectionContainer from "@/components/molecules/cards/Section/SectionContainer";
-import SectionTitle from "@/components/molecules/cards/Section/SectionTitle";
-import SectionCardItem from "@/components/molecules/cards/Section/SectionCardItem";
-import SectionContent from "@/components/molecules/cards/Section/SectionContent";
-// Mock
-import { recommendations as mockRecommendationsSliders } from "@/fakeAPI";
+import { Row, Spin } from 'antd'
+import SectionContainer from '@/components/molecules/cards/Section/SectionContainer'
+import SectionTitle from '@/components/molecules/cards/Section/SectionTitle'
+import OfferProductCard from '@/components/molecules/cards/OfferProductCard'
+import { Carousel } from 'react-responsive-carousel'
+// Styles
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import SectionContent from '@/components/molecules/cards/Section/SectionContent'
 
 const Recommendations = () => {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [carouselProducts, setCarouselProducts] = useState([])
+
+  // 1. load products by default on page load
+  const loadAllProducts = useCallback(() => {
+    getProductsByCount(18).then((p) => {
+      setProducts(p.data)
+      // Clustering of products x4
+      const productsToCluster = Array(p.data.length / 6).fill([
+        0, 0, 0, 0, 0, 0,
+      ])
+      p.data.forEach((product, idxProduct) => {
+        const idxX = parseInt(idxProduct / 6)
+        const idxY = idxProduct % 6
+        productsToCluster[idxX][idxY] = product
+      })
+      setCarouselProducts(productsToCluster)
+      // Hide spin
+      setLoading(false)
+    })
+  }, [])
+
+  useEffect(() => {
+    if (!products.length) {
+      setLoading(true)
+      loadAllProducts()
+    }
+  }, [loadAllProducts, products.length])
+
+  const CarouselPages =
+    carouselProducts &&
+    carouselProducts.length > 0 &&
+    carouselProducts.map((carouselProduct, idxCarouselProduct) => (
+      <Row
+        id="AQUI_ESTOY_CARAJO"
+        key={idxCarouselProduct.toString()}
+        justify="space-evenly"
+        style={{
+          height: '432px',
+        }}
+      >
+        {carouselProduct.map((product, idxProduct) => (
+          <OfferProductCard
+            key={product._id}
+            product={product}
+            value={idxProduct + 1 + idxCarouselProduct * carouselProduct.length}
+          />
+        ))}
+      </Row>
+    ))
+
   return (
     <SectionContainer width="100%" id="Recommendations">
       <SectionTitle>RECOMENDACIONES</SectionTitle>
-      <Carousel autoplay autoplaySpeed={10000}>
-        {mockRecommendationsSliders.map(
-          (mockRecommendationsSlider, idxSlider) => (
-            <SectionContent key={idxSlider} padding="35px 64px">
-              {mockRecommendationsSlider.map((recommendationsRow, idxRow) => (
-                <Row key={idxRow} gutter={[16, 24]}>
-                  {recommendationsRow.map((mockRecommendationsCol, idxCol) => {
-                    const val =
-                      idxSlider *
-                        mockRecommendationsSlider.length *
-                        recommendationsRow.length +
-                      idxRow * recommendationsRow.length +
-                      idxCol +
-                      1;
-                    return (
-                      <Col key={idxCol} className="gutter-row" span={12}>
-                        <SectionCardItem
-                          id={`Recommendation-${val}`}
-                          onClick={() => console.log(`Recommendation-${val}`)}
-                          margin="16px auto"
-                          cardNumber={{
-                            diameter: 40,
-                            value: val,
-                          }}
-                          cardContent={mockRecommendationsCol}
-                        />
-                      </Col>
-                    );
-                  })}
-                </Row>
-              ))}
-            </SectionContent>
-          )
-        )}
-      </Carousel>
+      <SectionContent padding="36px 52px">
+        <Spin spinning={loading}>
+          <Carousel
+            centerSlidePercentage={100}
+            autoPlay
+            infiniteLoop
+            showArrows={false}
+            centerMode={true}
+            showStatus={false}
+            showThumbs={false}
+            showIndicators={false}
+            thumbWidth={110}
+          >
+            {CarouselPages}
+          </Carousel>
+        </Spin>
+      </SectionContent>
     </SectionContainer>
-  );
-};
+  )
+}
 
-export default Recommendations;
+export default Recommendations

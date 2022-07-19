@@ -8,6 +8,15 @@ import SectionContainer from './Section/SectionContainer'
 // Styles
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
+const SingleProductContainer = styled.div`
+  width: 577px;
+  height: 442px;
+  background: #d9d9d9;
+  border: 1px solid #ffc759;
+  border-radius: 20px;
+  margin-top: 16px;
+  padding: 32px;
+`
 
 const BtnQtyStyle = {
   width: '30px',
@@ -101,18 +110,8 @@ const SingleProduct = ({ product }) => {
         </SectionContainer>
       </Col>
       <Col span={12}>
-        <h2>{product.description}</h2>
-        <div
-          style={{
-            width: '577px',
-            height: '442px',
-            background: '#D9D9D9',
-            border: '1px solid #FFC759',
-            borderRadius: '20px',
-            marginTop: '16px',
-            padding: '32px',
-          }}
-        >
+        <h2>{product.title}</h2>
+        <SingleProductContainer>
           <Row gutter={16}>
             <Col span={24}>
               <h3>Descripción</h3>
@@ -142,7 +141,7 @@ const SingleProduct = ({ product }) => {
           >
             <Col span={4}>S/ </Col>
             <Col span={20} style={{ textAlign: 'right' }}>
-              S/ {Number(product.price).toFixed(2)}
+              {Number(product.price).toFixed(2)}
             </Col>
             <small
               style={{
@@ -212,7 +211,7 @@ const SingleProduct = ({ product }) => {
               </p>
             </Col>
           </Row>
-        </div>
+        </SingleProductContainer>
         <Row
           gutter={16}
           style={{

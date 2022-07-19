@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 // Business logic
 import { getProducts, getProductsCount } from '@/functions/product'
 // Components
@@ -20,7 +20,7 @@ const BestSellers = () => {
     getProductsCount().then((res) => setProductsCount(res.data))
   }, [])
 
-  const loadAllProducts = React.useCallback(() => {
+  const loadAllProducts = useCallback(() => {
     setLoading(true)
     // sort, order, limit
     getProducts('sold', 'desc', page).then((res) => {

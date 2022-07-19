@@ -1,7 +1,7 @@
-import React from "react";
-import { Select } from "antd";
+import React from 'react'
+import { Select } from 'antd'
 
-const { Option } = Select;
+const { Option } = Select
 
 const ProductCreateForm = ({
   handleSubmit,
@@ -27,12 +27,12 @@ const ProductCreateForm = ({
     brands,
     color,
     brand,
-  } = values;
+  } = values
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>Title</label>
+        <label>Título</label>
         <input
           type="text"
           name="title"
@@ -43,7 +43,7 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Description</label>
+        <label>Descripción</label>
         <input
           type="text"
           name="description"
@@ -54,7 +54,7 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Price</label>
+        <label>Precio</label>
         <input
           type="number"
           name="price"
@@ -78,7 +78,7 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Quantity</label>
+        <label>Cantidad</label>
         <input
           type="number"
           name="quantity"
@@ -101,7 +101,7 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Brand</label>
+        <label>Marca</label>
         <select name="brand" className="form-control" onChange={handleChange}>
           <option>Please select</option>
           {brands.map((b) => (
@@ -113,7 +113,7 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label>Category</label>
+        <label>Categoría</label>
         <select
           name="category"
           className="form-control"
@@ -131,10 +131,10 @@ const ProductCreateForm = ({
 
       {showSub && (
         <div>
-          <label>Sub Categories</label>
+          <label>Subcategorías</label>
           <Select
             mode="multiple"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             placeholder="Please select"
             value={subs}
             onChange={(value) => setValues({ ...values, subs: value })}
@@ -150,9 +150,9 @@ const ProductCreateForm = ({
       )}
 
       <br />
-      <button className="btn btn-outline-info">Save</button>
+      <button className="btn btn-outline-info">Guardar</button>
     </form>
-  );
-};
+  )
+}
 
-export default ProductCreateForm;
+export default ProductCreateForm
