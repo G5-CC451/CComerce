@@ -120,6 +120,7 @@ const go_to_create_category = [
   'Crear categoría.',
 ]
 const search_by_category_selected = [
+  'Categoría *',
   'Buscar por categoría número *',
   'Buscar categoría número *',
   'Buscar categoría *',
