@@ -45,7 +45,6 @@ const Offers = () => {
     carouselProducts.length > 0 &&
     carouselProducts.map((carouselProduct, idxCarouselProduct) => (
       <Row
-        id="AQUI_ESTOY_CARAJO"
         key={idxCarouselProduct.toString()}
         justify="space-evenly"
         style={{
@@ -54,6 +53,9 @@ const Offers = () => {
       >
         {carouselProduct.map((product, idxProduct) => (
           <OfferProductCard
+            id={`oferta-${
+              idxProduct + 1 + idxCarouselProduct * carouselProduct.length
+            }`}
             key={product._id}
             product={product}
             value={idxProduct + 1 + idxCarouselProduct * carouselProduct.length}

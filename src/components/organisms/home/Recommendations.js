@@ -55,6 +55,9 @@ const Recommendations = () => {
       >
         {carouselProduct.map((product, idxProduct) => (
           <OfferProductCard
+            id={`recomendación-${
+              idxProduct + 1 + idxCarouselProduct * carouselProduct.length
+            }`}
             key={product._id}
             product={product}
             value={idxProduct + 1 + idxCarouselProduct * carouselProduct.length}

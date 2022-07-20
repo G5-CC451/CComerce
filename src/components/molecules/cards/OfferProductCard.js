@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { useSelector, useDispatch } from 'react-redux'
-import _ from 'lodash'
 import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import _ from 'lodash'
 // Components
 import { Tooltip, notification } from 'antd'
 import SectionCardItem from './Section/SectionCardItem'
@@ -13,9 +13,8 @@ import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import ProductImageDefault from '@/assets/images/product-default.jpeg'
 import { cloudinaryUrl } from '@/config/cloudinary'
 
-const OfferProductCard = ({ product, value }) => {
+const OfferProductCard = ({ product, value, id }) => {
   // redux
-  const { user, cart } = useSelector((state) => ({ ...state }))
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
@@ -62,8 +61,12 @@ const OfferProductCard = ({ product, value }) => {
   return (
     <SectionCardItem
       key={slug}
-      id={slug}
-      onClick={() => console.log(slug)}
+      id={id}
+      data-id={product._id}
+      data-slug={slug}
+      onClick={() => {
+        console.log('slug', slug)
+      }}
       width={420}
       height={200}
       margin="auto"
@@ -207,6 +210,7 @@ const OfferProductCard = ({ product, value }) => {
                   }
                 >
                   <div
+                    className="handleAddToCart"
                     onClick={handleAddToCart}
                     disabled={product.quantity < 1}
                     style={{
@@ -214,6 +218,7 @@ const OfferProductCard = ({ product, value }) => {
                       background: '#ff9e6d',
                       color: '#000000',
                       borderBottomRightRadius: '10px',
+                      cursor: 'pointer',
                     }}
                   >
                     <ShoppingCartOutlined />

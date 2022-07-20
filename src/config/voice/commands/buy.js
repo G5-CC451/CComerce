@@ -2,12 +2,10 @@
  * Compra de producto y gestión del carrito de compras
  */
 
-import { getSimilars } from "../helpers/matchString"
+import { getSimilars } from '../helpers/matchString'
 
 // Para seleccionar producto
-export const select_to_product = getSimilars([
-  'quiero el producto seleccionado'
-])
+export const select_to_product = getSimilars(['seleccionar * *'])
 
 // Para agregar un producto a carrito
 export const add_to_cart = getSimilars([
@@ -15,11 +13,14 @@ export const add_to_cart = getSimilars([
   'agregar este producto al carrito',
   'agrega el * al carrito',
   'agrega la * al carrito',
+  'agrega * *',
+  'agrega * *',
+  'agregar * *',
 ])
 
 // Para aumentar los productos del carrito
 export const add_quantity_produtc_to_cart = getSimilars([
-  'agregar cantidad del producto *'
+  'agregar cantidad del producto *',
 ])
 
 // Para comprar un producto
