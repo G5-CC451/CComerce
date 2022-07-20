@@ -31,6 +31,16 @@ export const go_to_home = [
   'Ver todas las ofertas.',
   'Ver todas las categorías.',
   'Ver todas las recomendaciones.',
+
+  'Quiero ver categorías',
+  'Quiero ver ofertas',
+  'Quiero ver recomendaciones',
+  'Quiero ver todas las categorías',
+  'Quiero ver todas las ofertas',
+  'Quiero ver todas las recomendaciones',
+  'Ver todas las ofertas',
+  'Ver todas las categorías',
+  'Ver todas las recomendaciones',
 ]
 
 // Ir a la página '/cart'
