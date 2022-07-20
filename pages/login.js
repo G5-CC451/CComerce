@@ -63,6 +63,7 @@ const Login = () => {
       console.log('idTokenResult.token', idTokenResult.token)
 
       try {
+        localStorage.setItem('userToken', idTokenResult.token)
         const res = await createOrUpdateUser(idTokenResult.token)
         console.log('res', res)
         dispatch({
