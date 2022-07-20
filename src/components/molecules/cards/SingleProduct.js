@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import router from 'next/router'
 import styled from '@emotion/styled'
+import _ from 'lodash'
+import { useDispatch } from 'react-redux'
 // Components
 import { Col, notification, Row } from 'antd'
 import { Carousel } from 'react-responsive-carousel'
@@ -71,7 +74,10 @@ const CustomCarousel = styled(Carousel)`
 
 // this is childrend component of Product page
 const SingleProduct = ({ product }) => {
-  const [productQty, setProductQty] = useState(1)
+  const dispatch = useDispatch()
+
+  const [productQty, setProductQty] = useState(0)
+  const [isFoundCart, setIsFoundCart] = useState(false)
 
   const productCarousel = product.images.map((productImage) => (
     <img
@@ -81,6 +87,145 @@ const SingleProduct = ({ product }) => {
       alt={product.title}
     />
   ))
+
+  const handleQuantityChange = (count) => {
+    if (count > product.quantity) {
+      notification.error({
+        message: 'Cantidad no válida',
+        description: `Máxima cantidad disponible: ${p.quantity}. Por favor, intente con una cantidad menor.`,
+      })
+      return
+    }
+
+    // Mostrar cantidad en la vista
+    setProductQty(count)
+
+    // Respalda la cantidad seleccionada solo si el producto ya está en el carrito de compras
+    let cart = []
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
+      }
+
+      cart.map((cartProduct, i) => {
+        if (cartProduct._id == product._id) {
+          cart[i].count = count
+        }
+      })
+
+      localStorage.setItem('cart', JSON.stringify(cart))
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: cart,
+      })
+    }
+  }
+
+  const handleAddToCart = () => {
+    // create cart array
+    let cart = []
+    if (typeof window !== 'undefined') {
+      // if cart is in local storage GET it
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
+      }
+      // push new product to cart
+      cart.push({
+        ...product,
+        count: productQty,
+      })
+      // remove duplicates
+      const unique = _.uniqWith(cart, _.isEqual)
+      // save to local storage
+      // console.log('unique', unique)
+      localStorage.setItem('cart', JSON.stringify(unique))
+      // show notification
+      notification.success({
+        message: 'Agregado al carrito',
+        description: `El producto "${product.title}" se agregó al carrito.`,
+      })
+
+      // add to reeux state
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: unique,
+      })
+      // show cart items in side drawer
+      dispatch({
+        type: 'SET_VISIBLE',
+        payload: true,
+      })
+    }
+  }
+
+  const handleToBuy = () => {
+    // create cart array
+    let cart = []
+    if (typeof window !== 'undefined') {
+      // if cart is in local storage GET it
+      if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'))
+      }
+      // push new product to cart
+      cart = [
+        {
+          ...product,
+          count: productQty,
+        },
+      ]
+      // remove duplicates
+      const unique = _.uniqWith(cart, _.isEqual)
+      // save to local storage
+      // console.log('unique', unique)
+      localStorage.setItem('cart', JSON.stringify(unique))
+      // show notification
+      notification.success({
+        message: 'Agregado al carrito para compra',
+        description: `El producto "${product.title}" se agregó al carrito.`,
+      })
+
+      // add to reeux state
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: unique,
+      })
+      // show cart items in side drawer
+      dispatch({
+        type: 'SET_VISIBLE',
+        payload: true,
+      })
+
+      setTimeout(() => {
+        router.push(`${process.env.CCOMMERCE_BASE_URL}/cart`)
+      }, 1000)
+    }
+  }
+
+  useEffect(() => {
+    if (!productQty) {
+      let cart = []
+      if (typeof window !== 'undefined') {
+        if (localStorage.getItem('cart')) {
+          cart = JSON.parse(localStorage.getItem('cart'))
+        }
+
+        const productInCart = cart.find(
+          (cartProduct) => cartProduct._id == product._id
+        )
+
+        if (productInCart) {
+          setProductQty(productInCart.count)
+          setIsFoundCart(true)
+        } else {
+          setProductQty(1)
+          setIsFoundCart(false)
+        }
+      } else {
+        setProductQty(1)
+        setIsFoundCart(false)
+      }
+    }
+  }, [])
 
   return (
     <Row gutter={32}>
@@ -169,7 +314,7 @@ const SingleProduct = ({ product }) => {
                 id="productQtyDecrease"
                 onClick={() => {
                   if (product.quantity > 0 && productQty - 1 > 0) {
-                    setProductQty(productQty - 1)
+                    handleQuantityChange(productQty - 1)
                   } else {
                     notification.error({
                       message: 'Cantidad no válida',
@@ -197,12 +342,11 @@ const SingleProduct = ({ product }) => {
                 id="productQtyIncrease"
                 onClick={() => {
                   if (product.quantity >= productQty + 1) {
-                    setProductQty(productQty + 1)
+                    handleQuantityChange(productQty + 1)
                   } else {
                     notification.error({
                       message: 'Cantidad no válida',
-                      description:
-                        'No contamos con la cantidad que desea seleccionar. Por favor, intente con una cantidad menor.',
+                      description: `Máxima cantidad disponible: ${product.quantity}. Por favor, intente con una cantidad menor.`,
                     })
                   }
                 }}
@@ -222,14 +366,35 @@ const SingleProduct = ({ product }) => {
           <Col span={12}>
             <div
               style={BtnActionsStyle}
-              id={`buy-${product._id}`}
-              onClick={console.log('COMPRAR')}
+              id="buy-to-cart-product"
+              onClick={() => handleToBuy()}
             >
               COMPRAR
             </div>
           </Col>
           <Col span={12}>
-            <div style={BtnActionsStyle}>AÑADIR</div>
+            <div
+              id="add-to-cart-product"
+              style={BtnActionsStyle}
+              onClick={() => {
+                if (isFoundCart) {
+                  notification.success({
+                    message: `Cantidad del producto actualizada a ${productQty} unidades.`,
+                    description: (
+                      <div>
+                        El producto <strong>{product.title}</strong> ya está en
+                        el carrito de compras con su cantidad actualizada.
+                      </div>
+                    ),
+                  })
+                } else {
+                  console.log('AÑADIR')
+                  handleAddToCart()
+                }
+              }}
+            >
+              {isFoundCart ? '¡En carrito!' : 'AÑADIR'}
+            </div>
           </Col>
         </Row>
       </Col>
