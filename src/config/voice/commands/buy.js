@@ -6,12 +6,16 @@ import { getSimilars } from '../helpers/matchString'
 
 // Para seleccionar producto
 export const select_to_product = getSimilars([
+  'ver el producto número *',
+  'ver el producto *',
+  'ver producto número *',
+  'ver producto *',
   'seleccionar * *',
+  'ver *',
   'ver * *',
   'mostrar * *',
   'click en * *',
-  'click * *'
-
+  'click * *',
 ])
 
 // Para agregar un producto a carrito

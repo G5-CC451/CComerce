@@ -73,7 +73,11 @@ const Shop = () => {
               products.length > 0 &&
               products.map((product, idx) => (
                 <Col key={product._id} {...colSpan}>
-                  <ProductCard product={product} value={idx + 1} />
+                  <ProductCard
+                    id={`compra-${idx + 1}`}
+                    product={product}
+                    value={idx + 1}
+                  />
                 </Col>
               ))
             )}

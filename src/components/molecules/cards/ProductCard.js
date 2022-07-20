@@ -10,7 +10,7 @@ import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 // Assets
 import ProductImageDefault from '@/assets/images/product-default.jpeg'
 
-const ProductCard = ({ product, value }) => {
+const ProductCard = ({ product, value, id }) => {
   // redux
   const { user, cart } = useSelector((state) => ({ ...state }))
   const dispatch = useDispatch()
@@ -59,8 +59,11 @@ const ProductCard = ({ product, value }) => {
   return (
     <SectionCardItem
       key={slug}
-      id={slug}
-      onClick={() => console.log(slug)}
+      // id={slug}
+      // onClick={() => console.log(slug)}
+      id={id}
+      data-id={product._id}
+      data-slug={slug}
       width={310}
       height={180}
       margin="auto"

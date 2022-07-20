@@ -7,16 +7,41 @@ import router from 'next/router'
 
 export const buyCallbacks = {
   select_to_product: (type, number) => {
-    console.log('select_to_product', type, number)
-    const product = document.getElementById(`${type}-${number}`)
-    if (product) {
-      const slug = product.dataset.slug
-      router.push(`${process.env.CCOMMERCE_BASE_URL}/product/${slug}`)
+    console.log('select_to_product', { type: type, number: number })
+    if (router.pathname === '/') {
+      const product = document.getElementById(`${type}-${number}`)
+      if (product) {
+        const slug = product.dataset.slug
+        router.push(`${process.env.CCOMMERCE_BASE_URL}/product/${slug}`)
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    }
+
+    if (router.pathname === '/shop') {
+      console.log('se rompre')
+    }
+  },
+  view_to_product: (number) => {
+    console.log('view_to_product', number)
+    if (router.pathname === '/shop') {
+      console.log('\n\n\n')
+      console.log('ENTRO EN SHOP')
+      const product = document.getElementById(`compra-${number}`)
+      if (product) {
+        const slug = product.dataset.slug
+        router.push(`${process.env.CCOMMERCE_BASE_URL}/product/${slug}`)
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
     } else {
-      notification.error({
-        message: 'Error de interacción por voz',
-        description: 'El elemento deseado no existe en la página actual',
-      })
+      console.log('Mala pronunciación de comandos')
     }
   },
   add_to_cart: (type, number) => {
@@ -50,6 +75,39 @@ export const buyCallbacks = {
       } else {
         console.log('Mala pronunciación de comandos')
       }
+    }
+
+    if (router.pathname === '/shop') {
+      console.log('\n\n\n')
+      console.log(
+        'SHOP',
+        type,
+        number,
+        parseInt(type),
+        Number.isInteger(parseInt(type))
+      )
+      let productNumber = 0
+      if (number.command && Number.isInteger(parseInt(type))) {
+        productNumber = parseInt(type)
+      } else {
+        productNumber = parseInt(number)
+      }
+      console.log('ENTRO EN SHOP', productNumber)
+
+      const btnCart = document.querySelector(
+        `#compra-${productNumber} > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2)`
+      )
+      console.log('SHOP.btnCart', btnCart)
+      if (btnCart) {
+        btnCart.click()
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    } else {
+      console.log('Mala pronunciación de comandos')
     }
   },
   increase_quantity_product: () => {
