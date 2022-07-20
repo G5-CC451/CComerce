@@ -154,6 +154,7 @@ const HeaderDefault = () => {
           </li>
         </ul>
         <h2>TIENDA</h2>
+        <ul>
           <li>
             1! Puedes decir <b>VER N</b>, donde N es el producto mostrado en 
             pantalla.
@@ -163,7 +164,9 @@ const HeaderDefault = () => {
             <b>Añadir producto N al carrito</b>, donde N es el producto mostrado en 
             pantalla.
           </li>   
+        </ul>
         <h2>PRODUCTO</h2>
+        <ul>
           <li>
             1! Puedes decir <b>AÑADIR AL CARRITO</b> para añadir el producto con 
             la cantidad elegida al carrito de compras.
@@ -173,9 +176,10 @@ const HeaderDefault = () => {
             de compra con el producto en pantalla.
           </li>
           <li>
-            2! Puedes decir <b>AÑADE/QUITA 1</b> para añadir o quitar en 1 la cantidad 
+            3! Puedes decir <b>AÑADE/QUITA 1</b> para añadir o quitar en 1 la cantidad 
             del producto.
           </li>
+        </ul>
       </CustomModal>
     </HeaderContainer>
   )
