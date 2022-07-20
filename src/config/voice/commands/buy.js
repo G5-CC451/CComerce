@@ -6,10 +6,6 @@ import { getSimilars } from '../helpers/matchString'
 
 // Para seleccionar producto
 export const select_to_product = getSimilars([
-  'ver el producto número *',
-  'ver el producto *',
-  'ver producto número *',
-  'ver producto *',
   'seleccionar * *',
   'mostrar * *',
   'click en * *',
