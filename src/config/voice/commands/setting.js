@@ -3,21 +3,13 @@
  */
 
 // Interacción con libreria
-export const reset_voice_recognition = ['resetear', 'Resetear', 'Resetear.']
-export const shutdown_voice_recognition = [
+export const reset_voice_recognition = getSimilars(['resetear'])
+export const shutdown_voice_recognition = getSimilars([
   'chau',
   'chao',
   'sayonara',
   'bye bye',
-  'Chau',
-  'Chao',
-  'Sayonara',
-  'Bye bye',
-  'Chau.',
-  'Chao.',
-  'Sayonara.',
-  'Bye bye.',
-]
+])
 
 // Click, DoubleClick, Anti-click
-export const on_click = ['clic en *']
+export const on_click = getSimilars(['clic en *'])

@@ -14,6 +14,10 @@ export const navigateCallbacks = {
     console.log('Irá al Carrito')
     router.push(`${process.env.CCOMMERCE_BASE_URL}/cart`)
   },
+  go_to_back: () => {
+    console.log('Retroceder')
+    router.back()
+  },
   go_to_login: () => {
     router.push(`${process.env.CCOMMERCE_BASE_URL}/login`)
   },
