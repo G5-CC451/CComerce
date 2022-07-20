@@ -143,12 +143,12 @@ const HeaderDefault = () => {
           </li>
           <li>
             2! Puedes ver los productos de cada categoría simplemente diciendo:
-             "Ir a la categoría N", donde N es un número ubicado frente a cada
+            &amp;quot; Ir a la categoría N &amp;quot;, donde N es un número ubicado frente a cada
              categoría.
           </li>
           <li>
             3! Puedes seleccionar un producto de Oferta o Recomendaciones 
-            simplemente diciendo: "Ver OFERTA/RECOMENDACIÓN <b>N</b>", donde N
+            simplemente diciendo: &amp;quot; sVer OFERTA/RECOMENDACIÓN <b>N</b>&amp;quot; s, donde N
              es número identificador del producto en su área.
           </li>
               
