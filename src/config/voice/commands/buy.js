@@ -2,6 +2,8 @@
  * Compra de producto y gestión del carrito de compras
  */
 
+import { getSimilars } from "../helpers/matchString"
+
 // Para seleccionar producto
 export const select_to_product = getSimilars([
   'quiero el producto seleccionado'
