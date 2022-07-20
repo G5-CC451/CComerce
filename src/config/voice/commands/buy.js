@@ -11,11 +11,17 @@ export const select_to_product = getSimilars([
   'ver producto número *',
   'ver producto *',
   'seleccionar * *',
-  'ver *',
-  'ver * *',
   'mostrar * *',
   'click en * *',
   'click * *',
+])
+
+export const view_to_product = getSimilars([
+  'ver el producto número * ',
+  'ver el producto * ',
+  'ver producto número * ',
+  'ver producto * ',
+  'ver *',
 ])
 
 // Para agregar un producto a carrito
