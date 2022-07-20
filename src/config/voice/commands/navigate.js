@@ -2,6 +2,8 @@
  * Navegar entre pantallas, esto excluye los comandos que navegan en el sistema con propositos más específicos (click, press, etc)
  */
 
+import { getSimilars } from '../helpers/matchString'
+
 // Ir a la página '/'
 export const go_to_home = [
   'ir al inicio',
@@ -109,7 +111,7 @@ export const go_to_register = [
 ]
 
 // Navegar en la vista
-export const to_up = ['subir', 'Subir', 'Subir.']
+export const to_up = getSimilars(['subir'])
 export const to_down = ['bajar', 'Bajar', 'Bajar.']
 export const to_full_up = ['subir todo', 'Subir todo', 'Subir todo.']
 export const to_full_down = ['bajar todo', 'Bajar todo', 'Bajar todo.']
