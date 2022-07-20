@@ -136,7 +136,22 @@ const HeaderDefault = () => {
       >
         Para realizar la búsqueda de un determinado producto:
         <ul>
-          <li></li>
+          <li>
+            1! Activa el botón del micrófono ubicado en la barra de búsqueda
+            y da permisos para usar el micrófono. Comprueba que el ícono se 
+            vea de color verde.
+          </li>
+          <li>
+            2! Puedes ver los productos de cada categoría simplemente diciendo:
+             "Ir a la categoría N", donde N es un número ubicado frente a cada
+             categoría.
+          </li>
+          <li>
+            3! Puedes seleccionar un producto de Oferta o Recomendaciones 
+            simplemente diciendo: "Ver OFERTA/RECOMENDACIÓN <b>N</b>", donde N
+             es número identificador del producto en su área.
+          </li>
+              
         </ul>
       </CustomModal>
     </HeaderContainer>
