@@ -61,10 +61,42 @@ export const go_to_cart = [
 ]
 
 // Ir a la página '/login'
-export const go_to_login = []
+export const go_to_login = [
+  'ir a iniciar sesión',
+  'Ir a iniciar sesión',
+  'Ir a iniciar sesión.',
+
+  'ir al login',
+  'Ir al login',
+  'Ir al login.',
+
+  'ir a login',
+  'Ir a login',
+  'Ir a login.',
+
+  'ir a conectarse',
+  'Ir a conectarse',
+  'Ir a conectarse.',
+]
 
 // Ir a la página '/register'
-export const go_to_register = []
+export const go_to_register = [
+  'ir a registro',
+  'Ir a registro',
+  'Ir a registro.',
+
+  'ir al registro',
+  'Ir al registro',
+  'Ir al registro.',
+
+  'ir a registrarse',
+  'Ir a registrarse',
+  'Ir a registrarse.',
+
+  'ir a crear cuenta',
+  'Ir a crear cuenta',
+  'Ir a crear cuenta.',
+]
 
 // Navegar en la vista
 export const to_up = ['subir', 'Subir', 'Subir.']

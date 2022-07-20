@@ -15,11 +15,9 @@ export const navigateCallbacks = {
     router.push(`${process.env.CCOMMERCE_BASE_URL}/cart`)
   },
   go_to_login: () => {
-    console.log('Irá al HOME')
     router.push(`${process.env.CCOMMERCE_BASE_URL}/login`)
   },
   go_to_register: () => {
-    console.log('Irá al HOME')
     router.push(`${process.env.CCOMMERCE_BASE_URL}/register`)
   },
   // Navegar en la página
