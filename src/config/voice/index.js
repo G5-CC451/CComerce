@@ -1,13 +1,13 @@
-import { mockAllCommands } from "./commands";
-import { mockAllCallbacks } from "./callbacks";
+import { allCommands } from './commands'
+import { allCallbacks } from './callbacks'
 
-const allVoiceCommands = Object.entries(mockAllCommands).map(
-  ([mockCallbackName, mockCommand]) => {
+const allVoiceCommands = Object.entries(allCommands).map(
+  ([callbackName, command]) => {
     return {
-      command: mockCommand,
-      callback: mockAllCallbacks[mockCallbackName],
-    };
+      command: command,
+      callback: allCallbacks[callbackName],
+    }
   }
-);
+)
 
-export { allVoiceCommands };
+export { allVoiceCommands }
