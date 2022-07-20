@@ -5,7 +5,14 @@
 import { getSimilars } from '../helpers/matchString'
 
 // Para seleccionar producto
-export const select_to_product = getSimilars(['seleccionar * *'])
+export const select_to_product = getSimilars([
+  'seleccionar * *',
+  'ver * *',
+  'mostrar * *',
+  'click en * *',
+  'click * *'
+
+])
 
 // Para agregar un producto a carrito
 export const add_to_cart = getSimilars([
