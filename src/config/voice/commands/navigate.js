@@ -2,15 +2,7 @@
  * Navegar entre pantallas, esto excluye los comandos que navegan en el sistema con propositos más específicos (click, press, etc)
  */
 
-// Ir a la vista
-export const go_to_cart = [
-  'ir al carrito',
-  'ir a carrito',
-  'Ir a carrito.',
-  'Ir a carrito',
-  'Ir al carrito.',
-  'Ir al carrito',
-]
+// Ir a la página '/'
 export const go_to_home = [
   'ir al inicio',
   'ir a inicio',
@@ -18,14 +10,61 @@ export const go_to_home = [
   'Ir al inicio',
   'Ir al inicio.',
   'Ir a inicio.',
+  'ir a página inicial',
+  'ir a página inicial.',
+  'Ir a página inicial',
+  'Ir a página inicial.',
+  'ir a la página inicial',
+  'ir a la página inicial.',
+  'Ir a la página inicial',
+  'Ir a la página inicial.',
+  'ir a la página de inicio',
+  'ir a la página de inicio.',
+  'Ir a la página de inicio',
+  'Ir a la página de inicio.',
+  'Quiero ver categorías.',
+  'Quiero ver ofertas.',
+  'Quiero ver recomendaciones.',
+  'Quiero ver todas las categorías.',
+  'Quiero ver todas las ofertas.',
+  'Quiero ver todas las recomendaciones.',
+  'Ver todas las ofertas.',
+  'Ver todas las categorías.',
+  'Ver todas las recomendaciones.',
 ]
-export const go_to_create_category = [
-  'ir a registrar categoría',
-  'ir a crear categoría',
-  'Ir a crear categoría.',
-  'Ir a registrar categoría.',
-  'Crear categoría.',
+
+// Ir a la página '/cart'
+export const go_to_cart = [
+  'ir a carrito',
+  'Ir a carrito',
+  'Ir a carrito.',
+
+  'ir al carrito',
+  'Ir al carrito',
+  'Ir al carrito.',
+
+  'ir a carrito de compras',
+  'Ir a carrito de compras',
+  'Ir a carrito de compras.',
+
+  'ir al carrito de compras',
+  'Ir al carrito de compras',
+  'Ir al carrito de compras.',
+
+  'regresar al carrito de compras',
+  'Regresar al carrito de compras',
+  'Regresar al carrito de compras.',
+
+  'regresar a carrito de compras',
+  'Regresar a carrito de compras',
+  'Regresar a carrito de compras.',
 ]
+
+// Ir a la página '/login'
+export const go_to_login = []
+
+// Ir a la página '/register'
+export const go_to_register = []
 
 // Navegar en la vista
 export const to_up = ['subir', 'Subir', 'Subir.']

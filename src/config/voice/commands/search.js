@@ -77,5 +77,10 @@ export const search_by_category_selected = [
   'Buscar, productos categoría *.',
   'Buscar, productos relacionados con categoría número *.',
   'Buscar, productos relacionados con categoría *.',
-  'Llévame a la categoría *',
+  'Llévame a la categoría *.',
+  'Llévame a la categoría número *.',
+  'Entra a la categoría *.',
+  'Entra a la categoría número *.',
+  'Entrar a la categoría *.',
+  'Entrar a la categoría número *.',
 ]

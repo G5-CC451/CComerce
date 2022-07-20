@@ -5,19 +5,24 @@
 import router from 'next/router'
 
 export const navigateCallbacks = {
-  // Ir a la vista
-  go_to_cart: () => {
-    console.log('Irá al Carrito')
-    router.push(`${process.env.CCOMMERCE_BASE_URL}/cart`)
-  },
+  // Ir a la página
   go_to_home: () => {
     console.log('Irá al HOME')
     router.push(`${process.env.CCOMMERCE_BASE_URL}/`)
   },
-  go_to_create_category: () => {
-    router.push(`${process.env.CCOMMERCE_BASE_URL}/admin/category`)
+  go_to_cart: () => {
+    console.log('Irá al Carrito')
+    router.push(`${process.env.CCOMMERCE_BASE_URL}/cart`)
   },
-  // Navegar en la vista
+  go_to_login: () => {
+    console.log('Irá al HOME')
+    router.push(`${process.env.CCOMMERCE_BASE_URL}/login`)
+  },
+  go_to_register: () => {
+    console.log('Irá al HOME')
+    router.push(`${process.env.CCOMMERCE_BASE_URL}/register`)
+  },
+  // Navegar en la página
   to_up: () => {
     window.scrollBy({
       top: -window.innerHeight,
