@@ -40,10 +40,11 @@ const Login = () => {
     if (Object.keys(intended).length > 0) {
       router.push(intended.from)
     } else {
+      const newRedirect = "/"
       if (res.data.role === 'admin') {
-        router.push('/admin/dashboard')
+        router.push(newRedirect)
       } else {
-        router.push('/user/history')
+        router.push(newRedirect)
       }
     }
   }
