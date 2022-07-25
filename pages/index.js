@@ -15,7 +15,7 @@ const Index = () => {
           style={{
             padding: '0 16px',
             margin: '32px 0 16px 0',
-            minHeight: 330,
+            minHeight: 280,
             backgroundColor: 'transparent',
           }}
         >

@@ -27,11 +27,11 @@ const CategorySidebar = () => {
   }, [])
 
   return (
-    <SectionContainer height="530px">
+    <SectionContainer height="485px">
       <SectionTitle width="278px">CATEGORÍAS</SectionTitle>
       <SectionContent
         padding="0px 16px"
-        height="460px"
+        height="420px"
         style={{
           marginTop: '40px',
           overflow: 'hidden scroll',

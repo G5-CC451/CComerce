@@ -98,9 +98,8 @@ const Cart = () => {
     <SectionContent
       padding="24px 0px"
       width="675px"
-      height="803px"
+      height="703px"
       style={{
-        margin: '24px 16px',
         overflow: 'hidden scroll',
       }}
     >

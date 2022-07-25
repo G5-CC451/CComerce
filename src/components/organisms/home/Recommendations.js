@@ -69,7 +69,7 @@ const Recommendations = () => {
   return (
     <SectionContainer width="100%" id="Recommendations">
       <SectionTitle>RECOMENDACIONES</SectionTitle>
-      <SectionContent padding="36px 52px">
+      <SectionContent padding="36px 52px 0px 52px">
         <Spin spinning={loading}>
           <Carousel
             centerSlidePercentage={100}

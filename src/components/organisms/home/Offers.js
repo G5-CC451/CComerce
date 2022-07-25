@@ -48,7 +48,7 @@ const Offers = () => {
         key={idxCarouselProduct.toString()}
         justify="space-evenly"
         style={{
-          height: '320px',
+          height: '270px',
         }}
       >
         {carouselProduct.map((product, idxProduct) => (
