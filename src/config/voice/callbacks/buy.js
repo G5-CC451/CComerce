@@ -125,6 +125,21 @@ export const buyCallbacks = {
       }
     }
   },
+  increase_quantity_product_selected: (numberOfProduct) => {
+    if (router.pathname === '/cart') {
+      const btnQtyIncrease = document.getElementById(
+        `productQtyIncrease-${numberOfProduct}`
+      )
+      if (btnQtyIncrease) {
+        btnQtyIncrease.click()
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    }
+  },
   decrease_quantity_product: () => {
     console.log('decrease_quantity_product')
 
@@ -140,10 +155,41 @@ export const buyCallbacks = {
       }
     }
   },
+  decrease_quantity_product_selected: (numberOfProduct) => {
+    if (router.pathname === '/cart') {
+      const btnQtyDecrease = document.getElementById(
+        `productQtyDecrease-${numberOfProduct}`
+      )
+      if (btnQtyDecrease) {
+        btnQtyDecrease.click()
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    }
+  },
   buy_product: () => {
     console.log('buy_product')
     if (router.pathname === '/product/[slug]') {
       const btnBuy = document.getElementById('buy-to-cart-product')
+      if (btnBuy) {
+        btnBuy.click()
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    } else {
+      console.log('Mala pronunciación de comandos')
+    }
+  },
+  buy_product_in_cart: () => {
+    console.log('buy_product')
+    if (router.pathname === '/cart') {
+      const btnBuy = document.getElementById('cart_to_buy')
       if (btnBuy) {
         btnBuy.click()
       } else {

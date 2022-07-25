@@ -58,6 +58,32 @@ export const increase_quantity_product = getSimilars([
   'dale otro más',
 ])
 
+export const increase_quantity_product_selected = getSimilars([
+  'agrega cantidad del producto número *',
+  'agrega cantidad de producto número *',
+  'agrega cantidad del producto *',
+  'agrega cantidad de producto *',
+  'agregar cantidad del producto número *',
+  'agregar cantidad de producto número *',
+  'agregar cantidad del producto *',
+  'agregar cantidad de producto *',
+  'aumenta cantidad del producto *',
+  'aumenta cantidad de producto *',
+  'aumentar cantidad del producto *',
+  'aumentar cantidad de producto *',
+  'uno más del producto número *',
+  'uno más de producto número *',
+  'uno más del producto *',
+  'uno más de producto *',
+  'uno más de *',
+  'agrega uno más de *',
+  'agrega 1 más',
+  'añade 1 más',
+  'añade uno más',
+  '1 más',
+  'dale otro más',
+])
+
 // Para aumentar los productos del carrito
 export const decrease_quantity_product = getSimilars([
   'quita cantidad del producto',
@@ -66,6 +92,32 @@ export const decrease_quantity_product = getSimilars([
   'uno menos',
   '1 menos',
   'dale otro menos',
+])
+
+export const decrease_quantity_product_selected = getSimilars([
+  'quita cantidad del producto número *',
+  'quita cantidad de producto número *',
+  'quita cantidad del producto *',
+  'quita cantidad de producto *',
+  'quitar cantidad del producto número *',
+  'quitar cantidad de producto número *',
+  'quitar cantidad del producto *',
+  'quitar cantidad de producto *',
+  'disminuye cantidad del producto *',
+  'disminuye cantidad de producto *',
+  'disminuir cantidad del producto *',
+  'disminuir cantidad de producto *',
+  'uno menos del producto número *',
+  'uno menos de producto número *',
+  'uno menos del producto *',
+  'uno menos de producto *',
+  'uno menos de *',
+  'quita uno más de *',
+  'quita 1 más de *',
+  'remueve 1 más de *',
+  'remueve uno más de *',
+  '1 menos de *',
+  'dale otro menos de *',
 ])
 
 // Para comprar un producto
@@ -79,4 +131,13 @@ export const buy_product = getSimilars([
   'cómprame el producto',
   'compra el *',
   'cómprame el *',
+])
+
+export const buy_product_in_cart = getSimilars([
+  'quiero pagar',
+  'ya quiero comprar',
+  'compra ahorita',
+  'comprar ahorita',
+  'compra ahora',
+  'comprar ahora',
 ])

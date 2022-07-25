@@ -178,7 +178,8 @@ const Cart = () => {
                     >
                       <div
                         style={BtnQtyStyle}
-                        id="productQtyDecrease"
+                        id={`productQtyDecrease-${idx + 1}`}
+                        data-product_id={product._id}
                         onClick={() => {
                           if (product.quantity > 0 && product.count - 1 > 0) {
                             handleQuantityChange(product, product.count - 1)
@@ -201,7 +202,8 @@ const Cart = () => {
                       </div>
                       <div
                         style={BtnQtyStyle}
-                        id="productQtyIncrease"
+                        id={`productQtyIncrease-${idx + 1}`}
+                        data-product_id={product._id}
                         onClick={() => {
                           if (product.quantity >= product.count + 1) {
                             handleQuantityChange(product, product.count + 1)
@@ -326,6 +328,7 @@ const Cart = () => {
               </div>
               <div
                 //onClick={saveOrderToDb}
+                id="cart_to_buy"
                 onClick={saveCashOrderToDb}
                 style={{
                   margin: 'auto',
