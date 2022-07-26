@@ -24,7 +24,7 @@ export const go_to_back = getSimilars([
   'retroceder',
   'retrocede',
   'atrás',
-  'regresar'
+  'regresar',
 ])
 
 // Ir a la página '/cart'
@@ -50,6 +50,24 @@ export const go_to_register = getSimilars([
   'ir al registro',
   'ir a registrarse',
   'ir a crear cuenta',
+])
+
+export const go_to_help_me = getSimilars([
+  'por favor ayuda',
+  'por favor ayudame',
+  'por favor guíame',
+  'ayuda',
+  'ayúdame',
+  'guíame',
+  'ver ayuda',
+  'ver guía',
+])
+
+export const exit_from_help_me = getSimilars([
+  'salir de la ayuda',
+  'salir de la guía',
+  'salir de ayuda',
+  'salir de guía',
 ])
 
 // Navegar en la vista

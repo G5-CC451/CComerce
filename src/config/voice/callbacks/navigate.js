@@ -24,6 +24,29 @@ export const navigateCallbacks = {
   go_to_register: () => {
     router.push(`${process.env.CCOMMERCE_BASE_URL}/register`)
   },
+  go_to_help_me: () => {
+    const helpNode = document.getElementById('ccommerce-help')
+    if (helpNode) {
+      helpNode.click()
+    } else {
+      notification.error({
+        message: 'Error de interacción por voz',
+        description: 'El elemento deseado no existe en la página actual',
+      })
+    }
+  },
+  exit_from_help_me: () => {
+    const helpCloseNode =
+      document.getElementsByClassName('ant-modal-close-x')[0]
+    if (helpCloseNode) {
+      helpCloseNode.click()
+    } else {
+      notification.error({
+        message: 'Error de interacción por voz',
+        description: 'El elemento deseado no existe en la página actual',
+      })
+    }
+  },
   // Navegar en la página
   to_up: () => {
     window.scrollBy({

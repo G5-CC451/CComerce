@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
-import Link from "next/link";
-import styled from "@emotion/styled";
+import React, { useState, useRef } from 'react'
+import Link from 'next/link'
+import styled from '@emotion/styled'
 // Context
-import { VoiceContext } from "@/context/voice-context";
+import { VoiceContext } from '@/context/voice-context'
 // Components
-import { Layout, Space, Modal } from "antd";
-import Search from "@/components/molecules/forms/Search";
+import { Layout, Space, Modal } from 'antd'
+import Search from '@/components/molecules/forms/Search'
 // Assets
 import {
   ShoppingCartOutlined,
@@ -13,15 +13,15 @@ import {
   UserOutlined,
   AudioOutlined,
   HomeOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons'
 
-const { Header } = Layout;
+const { Header } = Layout
 
 const AudioStyle = {
-  color: "white",
-  fontSize: "24px",
-  verticalAlign: "middle",
-};
+  color: 'white',
+  fontSize: '24px',
+  verticalAlign: 'middle',
+}
 
 const HeaderContainer = styled(Header)`
   &&& {
@@ -34,39 +34,39 @@ const HeaderContainer = styled(Header)`
     background: #ff9e6d;
     color: #ffffff;
   }
-`;
+`
 
 const HeaderDefault = () => {
-  const microphoneRef = useRef(null);
+  const microphoneRef = useRef(null)
   const { handleListing, toogleListening, transcript, active } =
-    React.useContext(VoiceContext);
+    React.useContext(VoiceContext)
   const voiceHandleListing = React.useCallback(() => {
-    handleListing(microphoneRef);
-  }, [handleListing]);
+    handleListing(microphoneRef)
+  }, [handleListing])
 
   const voiceToogleListing = () => {
-    toogleListening(microphoneRef);
-  };
+    toogleListening(microphoneRef)
+  }
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   const showModal = () => {
-    setIsModalVisible(true);
-  };
+    setIsModalVisible(true)
+  }
 
   const handleOk = () => {
-    setIsModalVisible(false);
-  };
+    setIsModalVisible(false)
+  }
 
   const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+    setIsModalVisible(false)
+  }
 
   React.useEffect(() => {
     if (active) {
-      voiceHandleListing();
+      voiceHandleListing()
     }
-  }, [active, voiceHandleListing]);
+  }, [active, voiceHandleListing])
 
   return (
     <HeaderContainer>
@@ -87,7 +87,11 @@ const HeaderDefault = () => {
         <Link href="/cart">
           <ShoppingCartOutlined style={AudioStyle} />
         </Link>
-        <QuestionCircleOutlined style={AudioStyle} onClick={showModal} />
+        <QuestionCircleOutlined
+          style={AudioStyle}
+          onClick={showModal}
+          id="ccommerce-help"
+        />
         <Link href="/user/history">
           <UserOutlined style={AudioStyle} />
         </Link>
@@ -98,10 +102,10 @@ const HeaderDefault = () => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        {transcript && <p style={{ fontWeight: "bold" }}>{transcript}</p>}
+        {transcript && <p style={{ fontWeight: 'bold' }}>{transcript}</p>}
       </Modal>
     </HeaderContainer>
-  );
-};
+  )
+}
 
-export default HeaderDefault;
+export default HeaderDefault

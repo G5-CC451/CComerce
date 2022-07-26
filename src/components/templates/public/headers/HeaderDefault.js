@@ -112,7 +112,11 @@ const HeaderDefault = () => {
             </Link>
           </Col>
           <Col>
-            <QuestionCircleOutlined style={AudioStyle} onClick={showModal} />
+            <QuestionCircleOutlined
+              style={AudioStyle}
+              onClick={showModal}
+              id="ccommerce-help"
+            />
           </Col>
           <Col>
             <Link href="/user/history">
@@ -129,6 +133,7 @@ const HeaderDefault = () => {
         </Row>
       </Space>
       <CustomModal
+        className="helpme-ccommerce-modal"
         title="INSTRUCCIONES"
         visible={isModalVisible}
         onCancel={handleCancel}
@@ -138,46 +143,47 @@ const HeaderDefault = () => {
         <h2>INICIO</h2>
         <ul>
           <li>
-            1! Activa el botón del micrófono ubicado en la barra de búsqueda
-            y da permisos para usar el micrófono. Comprueba que el ícono se 
-            vea de color verde.
+            1! Activa el botón del micrófono ubicado en la barra de búsqueda y
+            da permisos para usar el micrófono. Comprueba que el ícono se vea de
+            color verde.
           </li>
           <li>
             2! Puedes ver los productos de cada categoría simplemente diciendo:
-            <b>Ir a la categoría N </b>, donde N es un número ubicado frente a cada
-             categoría.
+            <b>Ir a la categoría N </b>, donde N es un número ubicado frente a
+            cada categoría.
           </li>
           <li>
-            3! Puedes seleccionar un producto de Oferta o Recomendaciones 
-            simplemente diciendo <b> Ver OFERTA/RECOMENDACIÓN N</b>, donde <b>N</b>
-             es número identificador del producto en su área.
+            3! Puedes seleccionar un producto de Oferta o Recomendaciones
+            simplemente diciendo <b> Ver OFERTA/RECOMENDACIÓN N</b>, donde{' '}
+            <b>N</b>
+            es número identificador del producto en su área.
           </li>
         </ul>
         <h2>TIENDA</h2>
         <ul>
           <li>
-            1! Puedes decir <b>VER N</b>, donde N es el producto mostrado en 
+            1! Puedes decir <b>VER N</b>, donde N es el producto mostrado en
             pantalla.
           </li>
           <li>
-            2! Puedes añadir productos directamente al carrito al decir 
-            <b>Añadir producto N al carrito</b>, donde N es el producto mostrado en 
-            pantalla.
-          </li>   
+            2! Puedes añadir productos directamente al carrito al decir
+            <b>Añadir producto N al carrito</b>, donde N es el producto mostrado
+            en pantalla.
+          </li>
         </ul>
         <h2>PRODUCTO</h2>
         <ul>
           <li>
-            1! Puedes decir <b>AÑADIR AL CARRITO</b> para añadir el producto con 
+            1! Puedes decir <b>AÑADIR AL CARRITO</b> para añadir el producto con
             la cantidad elegida al carrito de compras.
           </li>
           <li>
-            2! Puedes decir <b>COMPRAR AHORA</b> para pasar directamente al resumen 
-            de compra con el producto en pantalla.
+            2! Puedes decir <b>COMPRAR AHORA</b> para pasar directamente al
+            resumen de compra con el producto en pantalla.
           </li>
           <li>
-            3! Puedes decir <b>AÑADE/QUITA 1</b> para añadir o quitar en 1 la cantidad 
-            del producto.
+            3! Puedes decir <b>AÑADE/QUITA 1</b> para añadir o quitar en 1 la
+            cantidad del producto.
           </li>
         </ul>
       </CustomModal>
