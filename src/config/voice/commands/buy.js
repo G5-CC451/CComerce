@@ -134,10 +134,7 @@ export const buy_product = getSimilars([
 ])
 
 export const buy_product_in_cart = getSimilars([
+  'pagar',
+  'pagar carrito',
   'quiero pagar',
-  'ya quiero comprar',
-  'compra ahorita',
-  'comprar ahorita',
-  'compra ahora',
-  'comprar ahora',
 ])
