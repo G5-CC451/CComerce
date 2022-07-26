@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="ecommerce.ccommerce" />
           <meta
             property="og:url"
-            content="https://cc-ommerce-frontend.vercel.app"
+            content="https://ccommerce-demo.vercel.app"
           />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}

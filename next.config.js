@@ -2,10 +2,10 @@ module.exports = {
   extends: ['eslint:recommended', 'next', 'plugin:@next/next/recommended'],
   reactStrictMode: true,
   env: {
-    CCOMMERCE_BASE_URL: 'https://cc-ommerce-frontend.vercel.app',
+    CCOMMERCE_BASE_URL: 'https://ccommerce-demo.vercel.app',
     REGISTER_REDIRECT_URL:
-      'https://cc-ommerce-frontend.vercel.app/register/complete',
-    FORGOT_PASSWORD_REDIRECT: 'https://cc-ommerce-frontend.vercel.app/login',
+      'https://ccommerce-demo.vercel.app/register/complete',
+    FORGOT_PASSWORD_REDIRECT: 'https://ccommerce-demo.vercel.app/login',
     // API_URL: 'https://cc-ommerce-backend-five.vercel.app/api',
     API_URL: 'https://ccommerce-api-heroku.herokuapp.com/api',
     FIREBASE: {
