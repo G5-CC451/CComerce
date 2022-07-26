@@ -8,6 +8,7 @@ import UserNav from '@/components/molecules/nav/UserNav'
 import ShowPaymentInfo from '@/components/molecules/cards/ShowPaymentInfo'
 // Assets
 import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons'
+import PublicBasic from '@/components/templates/public/Basic'
 
 const History = () => {
   const router = useRouter()
@@ -20,9 +21,10 @@ const History = () => {
 
   const loadUserOrders = React.useCallback(async () => {
     console.log('user', user)
-    if (user) {
+    const token = (user && user.token) || localStorage.getItem('userToken')
+    if (token) {
       try {
-        const res = await getUserOrders(user.token)
+        const res = await getUserOrders(token)
         setOrders(res.data)
       } catch (error) {
         console.log(error)
@@ -49,14 +51,14 @@ const History = () => {
         {order.products.map((p, i) => (
           <tr key={i}>
             <td>
-              <b>{p.product.title}</b>
+              <b>{p.title}</b>
             </td>
-            <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
+            <td>{p.price}</td>
+            <td>{p.brand}</td>
             <td>{p.color}</td>
             <td>{p.count}</td>
             <td>
-              {p.product.shipping === 'Yes' ? (
+              {p.shipping === 'Yes' ? (
                 <CheckCircleOutlined style={{ color: 'green' }} />
               ) : (
                 <CloseCircleOutlined style={{ color: 'red' }} />
@@ -78,21 +80,23 @@ const History = () => {
     ))
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-2">
-          <UserNav />
-        </div>
-        <div className="col text-center">
-          <h4>
-            {orders.length > 0
-              ? 'Órdenes de compra del usuario'
-              : 'Sin ordenes de compra'}
-          </h4>
-          {showEachOrders()}
+    <PublicBasic>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-2">
+            <UserNav />
+          </div>
+          <div className="col text-center">
+            <h4>
+              {orders.length > 0
+                ? 'Órdenes de compra del usuario'
+                : 'Sin ordenes de compra'}
+            </h4>
+            {showEachOrders()}
+          </div>
         </div>
       </div>
-    </div>
+    </PublicBasic>
   )
 }
 

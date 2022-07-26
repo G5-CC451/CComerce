@@ -202,4 +202,20 @@ export const buyCallbacks = {
       console.log('Mala pronunciación de comandos')
     }
   },
+  buy_products_in_checkout: () => {
+    if (router.pathname === '/checkout') {
+      const btnBuyInCheckout = document.getElementById('buy_checkout')
+      console.log('btnBuyInCheckout', btnBuyInCheckout)
+      if (btnBuyInCheckout) {
+        btnBuyInCheckout.click()
+      } else {
+        notification.error({
+          message: 'Error de interacción por voz',
+          description: 'El elemento deseado no existe en la página actual',
+        })
+      }
+    } else {
+      console.log('Mala pronunciación de comandos')
+    }
+  },
 }

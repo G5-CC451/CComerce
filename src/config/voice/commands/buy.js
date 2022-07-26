@@ -138,3 +138,9 @@ export const buy_product_in_cart = getSimilars([
   'pagar carrito',
   'quiero pagar',
 ])
+
+export const buy_products_in_checkout = getSimilars([
+  'efectuar orden',
+  'efectuar pedido',
+  'efectuar pago',
+])

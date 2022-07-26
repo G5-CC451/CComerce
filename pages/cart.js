@@ -61,7 +61,13 @@ const Cart = () => {
         console.log('CART POST RES', res)
         if (res.data.ok) router.push('/checkout')
       })
-      .catch((err) => console.log('cart save err', err))
+      .catch((err) => {
+        notification.error({
+          message: 'Usuario no autenticado',
+          description: 'Por favor, inicie sesión para continuar con la compra.',
+        })
+        console.log('cart save err', err)
+      })
   }
 
   const handleQuantityChange = (product, count) => {

@@ -115,6 +115,7 @@ const Checkout = () => {
           <Row>
             <Col span={12}>
               <button
+                id="buy_checkout"
                 className="btn btn-primary"
                 disabled={!products.length}
                 onClick={() => {
