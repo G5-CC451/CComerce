@@ -6,9 +6,9 @@ import { getSimilars } from '../helpers/matchString'
 
 // Para seleccionar producto
 export const select_to_product = getSimilars([
+  'click en * *',
   'seleccionar * *',
   'mostrar * *',
-  'click en * *',
   'click * *',
 ])
 
@@ -142,5 +142,6 @@ export const buy_product_in_cart = getSimilars([
 export const buy_products_in_checkout = getSimilars([
   'efectuar orden',
   'efectuar pedido',
+  'efectuar pedidos',
   'efectuar pago',
 ])

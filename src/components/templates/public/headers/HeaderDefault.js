@@ -134,7 +134,7 @@ const HeaderDefault = () => {
       </Space>
       <CustomModal
         className="helpme-ccommerce-modal"
-        title="INSTRUCCIONES"
+        title="AYUDA"
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
@@ -149,14 +149,14 @@ const HeaderDefault = () => {
           </li>
           <li>
             2! Puedes ver los productos de cada categoría simplemente diciendo:
-            <b>Ir a la categoría N </b>, donde N es un número ubicado frente a
+            <b>Ir a la categoría N</b>, donde N es un número ubicado frente a
             cada categoría.
           </li>
           <li>
             3! Puedes seleccionar un producto de Oferta o Recomendaciones
-            simplemente diciendo <b> Ver OFERTA/RECOMENDACIÓN N</b>, donde{' '}
+            simplemente diciendo <b> Seleccionar OFERTA/RECOMENDACIÓN N</b>, donde 
             <b>N</b>
-            es número identificador del producto en su área.
+             es número identificador del producto en su área.
           </li>
         </ul>
         <h2>TIENDA</h2>
@@ -186,6 +186,8 @@ const HeaderDefault = () => {
             cantidad del producto.
           </li>
         </ul>
+
+        Puedes salir de la ayuda diciendo <b>CERRAR AYUDA</b>
       </CustomModal>
     </HeaderContainer>
   )

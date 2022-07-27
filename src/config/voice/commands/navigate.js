@@ -70,6 +70,7 @@ export const exit_from_help_me = getSimilars([
   'salir de guía',
   'cerrar ayuda',
   'cerrar la ayuda',
+  'cerrar',
 ])
 
 // Navegar en la vista

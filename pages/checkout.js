@@ -125,7 +125,7 @@ const Checkout = () => {
                   createCashOrder()
                 }}
               >
-                Efectuar pedido
+                Efectuar orden
               </button>
             </Col>
 
